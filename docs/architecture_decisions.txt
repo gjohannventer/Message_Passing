@@ -1,0 +1,34 @@
+I have decided to separate the monolith into 3 separate domains called the following:
+
+1. Connection (REST)
+2. Person (REST)
+3. Location (GRPC and Kafka)
+4. Frontend (React)
+
+The Frontend is already designed in a way to call the persons and connections in individual components
+so I decided to separate them into their own microservice apis.
+
+I made the Connection and Person API REST-based since it is a good way to keep the APIs uniform and 
+also REST is the most common form of message passing
+and an industry-standard that will
+be easy to use if other users want to integrate with the person or connection APIs to get data
+
+The Location domain contains 2 microservices.
+
+1. location-grpc-api (GRPC and Kafka)
+2. location-consumer (Kafka)
+
+The location-grpc-api will be a grpc based service since grpc is very quick and it will be working with a 
+lot of incoming location data that needs to be processed (It can come from a data science team maybe). 
+It will also contain a Kafka producer that will queue the location asynchronously to a topic called location.
+
+The Kafka will improve the performance, reliability and also enable the decoupling of my location domain 
+by separating it into a producer and consumer. 
+Kafka is also reliable in the fact that that it will keep my data on the message queue even if the
+services go down. If the service starts up again it will process those messages further.
+
+The decoupling of Kafka also helps that if either one of the location microservices 
+goes down only one will get affected(maybe producer) and the other one(maybe consumer) still carries on doing its work.
+
+The Location consumer will contain the code that will read the data from the message queue topic
+ that was queued by the location-grpc-api so that the data can be inserted into the DB.
