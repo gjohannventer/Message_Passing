@@ -78,10 +78,6 @@ Afterwards, you can test that `kubectl` works by running a command like `kubectl
 To deploy Kafka using Helm for Kubernetes, please follow these steps:
 
 1. Install Helm on your computer
-
-On Windows, using Choco (the easiest way)
-
-choco install Kubernetes-helm
 2. After installing Helm, do (this needs to be done in your computer or where you are saving your deployment files)
 
 helm repo add bitnami ‌https://charts.bitnami.com/bitnami‌
@@ -124,9 +120,9 @@ Once the project is up and running, you should be able to see 3 deployments and 
 
 
 These pages should also load on your web browser:
-* `http://localhost:30000/` - Frontend ReactJS Application
-* `http://localhost:30001/` - Person-API
-* `http://localhost:30001/api/` - Base path for Person-API
+* `http://localhost:30006/` - Frontend ReactJS Application
+* `http://localhost:30005/` - Person-API
+* `http://localhost:30005/api/` - Base path for Person-API
 * `http://localhost:30002/` - Connection-API
 * `http://localhost:30002/api/` - Base path for Connection-API
 
