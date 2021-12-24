@@ -20,7 +20,7 @@ The Location domain contains 2 microservices.
 
 The location-grpc-api will be a grpc based service since grpc is very quick and it will be working with a 
 lot of incoming location data that needs to be processed (It can come from a data science team maybe). 
-It will also contain a Kafka producer that will queue the location asynchronously to a topic called location.
+It will also contain a Kafka producer that will queue the locations asynchronously to a topic called location.
 
 The Kafka will improve the performance, reliability and also enable the decoupling of my location domain 
 by separating it into a producer and consumer. 

@@ -1,31 +1,31 @@
 Run the grpc server and send coordinate
 
 The location-grpc-api[./modules/location-grpc-api] will contain a file called writer.py inside the main folder [app/udaconnect] of the microservice
-run the command to send the sample payload: python writer.py
+run the command to send the sample payload: 
+python writer.py
 
 ```
 Output ---
 Sending sample payload...
 
-create a location!
-person_id: "25"
+person_id: "1"
 latitude: "35"
 longitude: "-45"
 
-create a location!
 person_id: "6"
 latitude: "45"
 longitude: "-5"
-
-{'person_id': '1', 'latitude': '35', 'longitude': '-45'}
-{'person_id': '6', 'latitude': '45', 'longitude': '-5'}
 ```
 
 Run the grpc server and get location
 
 The location-grpc-api[./modules/location-grpc-api] will contain a file called getter.py inside the main folder [app/udaconnect] of the microservice
-run the command to get the location payload: python getter.py
+run the command to get the location payload: 
+python getter.py
 
 ```
 Output ---
-{ "person_id": 29, "longitude": '010100000000ADF9F197925EC0FDA19927D7C64240', "latitude": '010100000000ADF9F197925EC0FDA19927D7C64240' }
+Sending sample payload...
+person_id: "29"
+latitude: "-122.2905240000000049"
+longitude: "37.5534409999999994"
