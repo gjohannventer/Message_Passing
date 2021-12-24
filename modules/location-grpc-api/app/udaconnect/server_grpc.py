@@ -23,15 +23,22 @@ class LocationServicer(location_pb2_grpc.LocationServiceServicer):
         kafka_request = json.dumps(request_value).encode()
         kafka_producer.send(kafka_topic, kafka_request)
         kafka_producer.flush()
+
         
-        return location_pb2.LocationMessage(**request_value)
+        response_value = {
+            "person_id": str(request.person_id),
+            "latitude": str(request.latitude),
+            "longitude": str(request.longitude)
+        }
+        
+        return location_pb2.LocationMessage(**response_value)
 
     def Get(self, request, context):
         location: Location = LocationService.retrieve(int(request.id))
         response_value = {
-            "person_id": location.id,
-            "longitude": location.longitude,
-            "latitude": location.latitude
+            "person_id": str(location.id),
+            "longitude": str(location.longitude),
+            "latitude": str(location.latitude)
         }
 
         return location_pb2.LocationMessage(**response_value)
