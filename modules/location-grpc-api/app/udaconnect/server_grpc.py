@@ -1,6 +1,6 @@
 from concurrent import futures
-from app.udaconnect.models import Location
-from app.udaconnect.services import LocationService
+from models import Location
+from services import LocationService
 import grpc
 import location_pb2
 import location_pb2_grpc

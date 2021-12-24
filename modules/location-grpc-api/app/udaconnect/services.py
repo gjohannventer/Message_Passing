@@ -2,8 +2,8 @@ import logging
 from datetime import datetime
 from typing import Dict
 
-from app import db
-from app.udaconnect.models import Location
+from database import db
+from models import Location
 from database import db 
 
 logging.basicConfig(level=logging.WARNING)

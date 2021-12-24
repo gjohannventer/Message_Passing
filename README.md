@@ -74,7 +74,7 @@ users:
 Type `exit` to exit the virtual OS and you will find yourself back in your computer's session. Create the file (or replace if it already exists) `~/.kube/config` and paste the contents of the `k3s.yaml` output here.
 
 Afterwards, you can test that `kubectl` works by running a command like `kubectl describe services`. It should not return any errors.
-### Installing kubernetes
+### Installing kafka for kubernetes
 To deploy Kafka using Helm for Kubernetes, please follow these steps:
 
 1. Install Helm on your computer
@@ -98,7 +98,8 @@ Wait until the pods have been created. Two pods should be created:
 Create a topic for testing
 
 kubectl exec -it kafka-0 -- kafka-console-consumer.sh --bootstrap-server kafka:9092 --from-beginning --topic location
-### Steps
+
+### Steps for deploying individual services
 1. `kubectl apply -f deployment/db-configmap.yaml` - Set up environment variables for the pods
 2. `kubectl apply -f deployment/db-secret.yaml` - Set up secrets for the pods
 3. `kubectl apply -f deployment/postgres.yaml` - Set up a Postgres database running PostGIS
