@@ -12,7 +12,7 @@ print("Sending sample payload...")
 channel = grpc.insecure_channel("localhost:30003") #port of kubernetes
 stub = location_pb2_grpc.LocationServiceStub(channel)
 
-#insert the id that already exists in the db
+#get an id that already exists in the db
 request = location_pb2.LocationMessageRequest(
     id="29"
 )
