@@ -13,7 +13,7 @@ DB_PORT = os.environ["DB_PORT"]
 DB_NAME = os.environ["DB_NAME"]
 
 
-kafka_consumer = KafkaConsumer(kafka_topic, bootstrap_servers=kafka_url)
+kafka_consumer = E(kafka_topic, bootstrap_servers=kafka_url)
 
 def insert_in_db(location):
     from sqlalchemy import create_engine
