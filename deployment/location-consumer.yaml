@@ -33,7 +33,7 @@ spec:
       containers:
       - image: gjohannventer/location-consumer:latest
         name: location-consumer
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         env:
         - name: DB_USERNAME
           valueFrom:

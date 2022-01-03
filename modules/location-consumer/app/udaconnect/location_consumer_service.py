@@ -13,7 +13,8 @@ DB_PORT = os.environ["DB_PORT"]
 DB_NAME = os.environ["DB_NAME"]
 
 
-kafka_consumer = KafkaConsumer(kafka_topic, bootstrap_servers=kafka_url)
+kafka_consumer = KafkaConsumer(bootstrap_servers=kafka_url,consumer_timeout_ms=1000, group_id='location-group')
+kafka_consumer.subscribe(kafka_topic)
 
 def insert_in_db(location):
     from sqlalchemy import create_engine
@@ -32,8 +33,9 @@ def insert_in_db(location):
     conn.execute(insert)
 
 
-for location in kafka_consumer:
-    message = location.value.decode('utf-8')
-    print('{}'.format(message))
-    location_message = json.loads(message)
-    insert_in_db(location_message)
+while True:
+    for location in kafka_consumer:
+        message = location.value.decode('utf-8')
+        print('{}'.format(message))
+        location_message = json.loads(message)
+        insert_in_db(location_message)
